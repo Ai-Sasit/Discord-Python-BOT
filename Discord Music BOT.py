@@ -11,7 +11,7 @@ import asyncio
 #! Last Modified: 12 Dec 2020
 
 client = com.Bot(command_prefix='$')
-Token_ID = 'NDAxMzk2NzM5NDg1MDczNDA4.WljT2A.CguKkQnfiknQ89mZfHagFm0FXiU'
+Token_ID = 'Your Token'
 
 TubeList = list()
 NameList = list()
