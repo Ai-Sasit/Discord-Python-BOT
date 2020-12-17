@@ -7,9 +7,12 @@ import pafy
 import glob as G
 import asyncio
 
-TOKEN = 'Yout Token'
+#! Coding by Ai-Sasit
+#! Last Modified: 12 Dec 2020
 
 client = com.Bot(command_prefix='$')
+Token_ID = 'NDAxMzk2NzM5NDg1MDczNDA4.WljT2A.CguKkQnfiknQ89mZfHagFm0FXiU'
+
 TubeList = list()
 NameList = list()
 np_name = ["Null"]
@@ -44,6 +47,7 @@ def AddTubeList(Search):
     return result.title
 
 def PlayQueue(ctx):
+    print("Music is End!")
     if ("$music_temp.m4a" in G.glob("*.m4a")): remove("$music_temp.m4a")
     try:
         Inlist = TubeList.pop(0)
@@ -61,8 +65,11 @@ def PlayQueue(ctx):
 
 @client.event
 async def on_ready():
-    print('BOT is Activated!!')
-    print("Connected to Discord as {}.".format(client.user.name))
+    print("------- System is Activated -------")
+    print("-          BOT is Online          -")
+    print("- Connected to Discord as {}. -".format(client.user.name))
+    print("-----------------------------------")
+    await client.change_presence(activity = dis.Activity(type = dis.ActivityType.listening, name = '$help'))
 
 @client.command()
 async def Direct(ctx):
@@ -70,6 +77,7 @@ async def Direct(ctx):
 
 @client.command(aliases=['view', 'pro'])
 async def Profile(ctx, member: dis.Member):
+    print(f"Viewing Picture Profile : {member}")
     Show_Profile = dis.Embed(color=dis.Color.dark_gold())
     Show_Profile.set_image(url=f'{member.avatar_url}')
     await ctx.send(embed=Show_Profile)
@@ -134,6 +142,7 @@ async def join(ctx):
 
 @client.command(aliases=['dc', 'leave', 'quit', 'exit'])
 async def Disconnect(ctx):
+    print("BOT is Disconnected the voice channel")
     await ctx.send(":regional_indicator_g: :regional_indicator_o: :regional_indicator_o: :regional_indicator_d:   :regional_indicator_b: :regional_indicator_y: :regional_indicator_e: ")
     await ctx.voice_client.disconnect()
 
@@ -167,4 +176,4 @@ async def removequeue(ctx, index:int):
     TubeList.pop(index-1)
     await ctx.send(embed=Remove)
 
-client.run(TOKEN)
+client.run(Token_ID)
